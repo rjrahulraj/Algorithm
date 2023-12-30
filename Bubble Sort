@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+// Time complexity of worst and Average case is O(n^2) and Time complexity of best case(Already sorted in ascending order) is O(n) with the use of flag.
 void swap(int &a, int &b)
 {
           int temp = a;

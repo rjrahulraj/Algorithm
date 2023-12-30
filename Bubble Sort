@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+void swap(int &a, int &b)
+{
+          int temp = a;
+          a = b;
+          b = temp;
+}
+
+void Bubble_sort(int arr[], int n)
+{
+          int flag;
+          for (int i = n - 1; i >= 0; i--)
+          {
+                    flag = 0;
+                    for (int j = 0; j <= i - 1; j++)
+                    {
+                              if (arr[j] > arr[j + 1])
+                              {
+                                        flag = 1;
+                                        swap(arr[j], arr[j + 1]);
+                              }
+                    }
+                    if (flag == 0)
+                    {
+                              break;
+                    }
+          }
+}
+int main()
+{
+          int n;
+          cout << "Enter the number of element :  ";
+          cin >> n;
+          cout << "Enter the elment \n";
+          int ar[n];
+          for (int i = 0; i < n; i++)
+          {
+                    cout << i + 1 << " value : ";
+                    cin >> ar[i];
+          }
+          Bubble_sort(ar, n);
+          for (int i = 0; i < n; i++)
+          {
+                    cout << ar[i] << " ";
+          }
+}

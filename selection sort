@@ -1,0 +1,71 @@
+#include <iostream>
+using namespace std;
+
+bool isPowerOfTwo(int n)
+{
+          int m = n;
+          while (n != 0)
+          {
+                    if (n == 1)
+                    {
+                              return true;
+                    }
+                    if ((n >> 1) % 2 != 0)
+                    {
+                              return false;
+                    }
+                    m = m >> 1;
+                    cout << m;
+          }
+          return 1;
+}
+
+bool two_power(int n)
+{
+          for (int i = 0; i < 31; i++)
+          {
+                    int ans = pow(2, i);
+                    if (ans == n)
+                              return true;
+          }
+          return false;
+}
+
+void Selection_sort(int arr[], int n)
+{
+          int min;
+          for (int i = 0; i < n - 1; i++)
+          {
+                    min = i;
+                    for (int j = i + 1; j < n; j++)
+                    {
+                              if (arr[j] < arr[min])
+                                        min = j;
+                    }
+                    if (min == i)
+                    {
+                              break;
+                    }
+                    else
+                    {
+                              swap(arr[i], arr[min]);
+                    }
+          }
+}
+int main()
+{
+          int n;
+          cout << "Enter the number of element :  ";
+          cin >> n;
+          cout << "Enter the elment \n";
+          int ar[n];
+          for (int i = 0; i < n; i++)
+          {
+                    cin >> ar[i];
+          }
+          Selection_sort(ar, n);
+          for (int i = 0; i < n; i++)
+          {
+                    cout << ar[i] << " ";
+          }
+}

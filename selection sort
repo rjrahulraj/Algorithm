@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+// time complexity is O(n^2) in worst , average case.//
 void Selection_sort(int arr[], int n)
 {
           int min;

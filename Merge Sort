@@ -1,0 +1,69 @@
+#include <iostream>
+using namespace std;
+
+// Time complexity of worst and Average case is O(nlogn) and Space complexity of worst case is O(n).
+
+void Merge(int arr[], int low, int mid, int high)
+{
+          int i = low, j = mid + 1, k = low;
+          int B[high + 1] = {0};
+          while (i <= mid && j <= high)
+          {
+                    if (arr[i] <= arr[j])
+                    {
+                              B[k++] = arr[i++];
+                    }
+                    else
+                    {
+                              B[k++] = arr[j++];
+                    }
+          }
+          for (; i <= mid;)
+          {
+                    B[k++] = arr[i++];
+          }
+          for (; j <= high;)
+          {
+                    B[k++] = arr[j++];
+          }
+          for (i = low; i <= high; i++)
+          {
+                    arr[i] = B[i];
+          }
+}
+
+void MS(int arr[], int low, int high) // used for Argument settlement
+{
+          if (low < high)
+          {
+                    int mid = (low + high) / 2;
+                    MS(arr, low, mid);
+                    MS(arr, mid + 1, high);
+                    Merge(arr, low, mid, high);
+          }
+}
+
+void Merge_Sort(int arr[], int n)
+{
+          MS(arr, 0, n - 1);
+}
+
+int main()
+{
+          int n;
+          cout << "Enter the number of element :  ";
+          cin >> n;
+          cout << "Enter the elment \n";
+          int ar[n] = {0};
+          for (int i = 0; i < n; i++)
+          {
+                    cout << i + 1 << " value : ";
+                    cin >> ar[i];
+          }
+          Merge_Sort(ar, n);
+          for (int i = 0; i < n; i++)
+          {
+                    cout << ar[i] << " ";
+          }
+          return 0;
+}

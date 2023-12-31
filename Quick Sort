@@ -1,0 +1,72 @@
+#include <iostream>
+#include <string>
+using namespace std;
+// Time complexity of worst and Average case is O(nlogn) and Space complexity of worst case is O(1).(stack memory are not Included(Generally stack memory are not included)).
+
+void swap(int &a, int &b)
+{
+          int temp = a;
+          a = b;
+          b = temp;
+}
+
+int partiton(int arr[], int low, int high)
+{
+          int pivot = arr[low];
+          int i = low, j = high;
+          while (i < j)
+          {
+                    while ((arr[i] <= pivot) && i <= high)
+                    {
+                              i++;
+                    }
+                    while ((arr[j] > pivot) && j >= low)
+                    {
+                              j--;
+                    }
+                    if (i < j)
+                    {
+                              swap(arr[i], arr[j]);
+                    }
+          }
+          swap(arr[low], arr[j]);
+          return j;
+}
+
+void QS(int A[], int low, int high)
+{
+          if (low < high)
+          {
+                    int j;
+                    j = partiton(A, low, high);
+                    QS(A, low, j - 1);
+                    QS(A, j + 1, high);
+          }
+}
+
+void Quicksort(int A[], int n)
+{
+          QS(A, 0, n - 1);
+}
+
+int main()
+{
+
+          int n;
+          cout << "Enter the number of element :  ";
+          cin >> n;
+          cout << "Enter the elment :-  \n";
+          int ar[n] = {0};
+          for (int i = 0; i < n; i++)
+          {
+                    cout << i + 1 << " value : ";
+                    cin >> ar[i];
+          }
+          Quicksort(ar, n);
+          for (int i = 0; i < n; i++)
+          {
+                    cout << ar[i] << " ";
+          }
+
+          return 0;
+}

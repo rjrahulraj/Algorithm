@@ -12,11 +12,7 @@ void Selection_sort(int arr[], int n)
                               if (arr[j] < arr[min])
                                         min = j;
                     }
-                    if (min == i)
-                    {
-                              break;
-                    }
-                    else
+                    if (min != i)
                     {
                               swap(arr[i], arr[min]);
                     }
